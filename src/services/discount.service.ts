@@ -105,10 +105,10 @@ const calculate = (
     throw new Error("Cart is empty");
   }
 
-  const originalPrice = getCartTotal(items);
   const grouped = groupCampaigns(campaigns);
 
-  let currentPrice = originalPrice;
+  let currentPrice = getCartTotal(items);
+  const originalPrice = currentPrice;
   const discountList: DiscountList[] = [];
   const applied: Campaign[] = [];
 
@@ -147,40 +147,24 @@ const calculate = (
   };
 };
 
-export const calculateDiscount = async (
-  request: DiscountCalculationRequest,
-): Promise<ResponseCommonType<DiscountCalculationResult | Error>> => {
-  try {
-    const result = calculate(request.cartItems, request.campaigns);
-    return { status: HTTP_RESPONSE_CODE.OK, data: result };
-  } catch (error) {
-    return { status: HTTP_RESPONSE_CODE.BAD_REQUEST, data: error as Error };
-  }
-};
-
 export const calculateDiscountByCartId = async (
   req: DiscountCalculationByCartIdRequest,
-): Promise<ResponseCommonType<DiscountCalculationResult | Error | null>> => {
-  try {
-    const cart = await cartService.getCartById(req.cartId);
+): Promise<ResponseCommonType<DiscountCalculationResult | null>> => {
+  const cart = await cartService.getCartById(req.cartId);
 
-    if (!cart) {
-      return {
-        status: HTTP_RESPONSE_CODE.NOT_FOUND,
-        data: new Error(`Cart not found: ${req.cartId}`),
-      };
-    }
-
-    if (!cart.data?.items) return { status: HTTP_RESPONSE_CODE.OK, data: null };
-    const result = calculate(cart.data.items, req.campaigns);
-    console.log({ result });
-
-    return { status: HTTP_RESPONSE_CODE.OK, data: result };
-  } catch (error) {
-    return { status: HTTP_RESPONSE_CODE.BAD_REQUEST, data: error as Error };
+  if (!cart || !cart.data) {
+    throw new Error(`Cart not found: ${req.cartId}`);
   }
+
+  if (!cart.data.items || cart.data.items.length === 0) {
+    return { status: HTTP_RESPONSE_CODE.OK, data: null };
+  }
+
+  const result = calculate(cart.data.items, req.campaigns);
+
+  return { status: HTTP_RESPONSE_CODE.OK, data: result };
 };
+
 export default {
-  calculateDiscount,
   calculateDiscountByCartId,
 };

@@ -17,18 +17,6 @@ export const getCartById = async (request: Request, response: Response) => {
   }
 };
 
-export const getCartByUserId = async (request: Request, response: Response) => {
-  try {
-    const cart = await cartService.getCartByUserId(
-      request.params.userId as string,
-    );
-    if (!cart) return sendNotFound(response, "Cart");
-    return sendSuccess(response, cart, "Cart retrieved");
-  } catch (error) {
-    return sendBadRequest(response, (error as Error).message);
-  }
-};
-
 export const createCart = async (request: Request, response: Response) => {
   try {
     const cart = await cartService.createCart(request.body);
@@ -47,4 +35,4 @@ export const getAllCarts = async (_: Request, response: Response) => {
   }
 };
 
-export default { getCartById, getCartByUserId, createCart, getAllCarts };
+export default { getCartById, createCart, getAllCarts };

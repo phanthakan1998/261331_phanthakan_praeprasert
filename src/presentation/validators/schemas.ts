@@ -52,11 +52,6 @@ const specialCampaignSchema = Joi.object({
   discountAmount: Joi.number().positive().required(),
 });
 
-export const discountCalculateSchema = Joi.object({
-  cartItems: Joi.array().items(cartItemSchema).min(1).required(),
-  campaigns: Joi.array().min(1).required(),
-});
-
 export const discountCalculateByCartSchema = Joi.object({
   cartId: Joi.string().required(),
   campaigns: Joi.array().min(1).required(),
@@ -64,8 +59,4 @@ export const discountCalculateByCartSchema = Joi.object({
 
 export const idParamSchema = Joi.object({
   id: Joi.string().required(),
-});
-
-export const userIdParamSchema = Joi.object({
-  userId: Joi.string().required(),
 });

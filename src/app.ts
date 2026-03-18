@@ -6,12 +6,16 @@ import { limiter } from "./config/limiter";
 import corsOptions from "./config/cors";
 import cors from "cors";
 import { PORT } from "./config/dotenv";
+import { setupSwagger } from "./config/swagger";
+
 const app = express();
 app.use(limiter);
 app.use(cors(corsOptions()));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+
+setupSwagger(app);
 
 app.get("/health", (_req: Request, res: Response) => {
   res.status(200).json({ status: "OK" });

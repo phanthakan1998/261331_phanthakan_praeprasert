@@ -31,29 +31,6 @@ export const getCartById = async (
   }
 };
 
-export const getCartByUserId = async (
-  userId: string,
-): Promise<ResponseCommonType<Cart | Error>> => {
-  try {
-    const cart = await cartRepository.findByUserId(userId);
-    if (!cart) {
-      return {
-        status: HTTP_RESPONSE_CODE.NOT_FOUND,
-        data: new Error("Cart not found"),
-      };
-    }
-    return {
-      status: HTTP_RESPONSE_CODE.OK,
-      data: cart,
-    };
-  } catch (error) {
-    return {
-      status: HTTP_RESPONSE_CODE.INTERNAL_SERVER_ERROR,
-      data: error as Error,
-    };
-  }
-};
-
 export const createCart = async (
   request: CreateCartRequest,
 ): Promise<ResponseCommonType<Cart | Error>> => {
@@ -88,7 +65,6 @@ export const getAllCarts = async (): Promise<ResponseCommonType<Cart[]>> => {
 
 export default {
   getCartById,
-  getCartByUserId,
   createCart,
   getAllCarts,
 };

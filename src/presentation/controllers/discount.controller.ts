@@ -6,15 +6,6 @@ import {
   sendNotFound,
 } from "../../infrastructure/common/utils/response.util";
 
-export const calculateDiscount = (request: Request, response: Response) => {
-  try {
-    const result = discountService.calculateDiscount(request.body);
-    return sendSuccess(response, result, "Discount calculated");
-  } catch (error) {
-    return sendBadRequest(response, (error as Error).message);
-  }
-};
-
 export const calculateDiscountByCartId = async (
   request: Request,
   response: Response,
@@ -34,4 +25,4 @@ export const calculateDiscountByCartId = async (
   }
 };
 
-export default { calculateDiscount, calculateDiscountByCartId };
+export default { calculateDiscountByCartId };
