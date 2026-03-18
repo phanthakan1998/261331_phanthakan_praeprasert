@@ -19,6 +19,7 @@ export const validate = (
 
     req[source] = value;
     next();
+    return;
   };
 };
 

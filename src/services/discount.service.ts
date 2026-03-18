@@ -8,7 +8,6 @@ import {
   Campaign,
   DiscountCalculationResult,
   DiscountList,
-  DiscountCalculationRequest,
   DiscountCalculationByCartIdRequest,
 } from "../infrastructure/common/types/discount.type";
 import { ResponseCommonType } from "../infrastructure/common/types/response-common.type";
@@ -101,10 +100,6 @@ const calculate = (
   items: CartItem[],
   campaigns: Campaign[],
 ): DiscountCalculationResult => {
-  if (!items?.length) {
-    throw new Error("Cart is empty");
-  }
-
   const grouped = groupCampaigns(campaigns);
 
   let currentPrice = getCartTotal(items);
