@@ -7,6 +7,10 @@ import corsOptions from "./config/cors";
 import cors from "cors";
 import { PORT } from "./config/dotenv";
 import { setupSwagger } from "./config/swagger";
+import {
+  errorHandler,
+  notFoundHandler,
+} from "./presentation/middleware/error.middleware";
 
 const app = express();
 app.use(limiter);
@@ -24,6 +28,8 @@ app.get("/health", (_req: Request, res: Response) => {
 app.use(productRoutes);
 app.use(discountRoutes);
 app.use(cartRoutes);
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 app.listen(PORT);
 

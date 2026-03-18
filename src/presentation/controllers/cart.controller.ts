@@ -10,7 +10,7 @@ import {
 export const getCartById = async (request: Request, response: Response) => {
   try {
     const cart = await cartService.getCartById(request.params.id as string);
-    if (!cart) return sendNotFound(response, "Cart");
+    if (!cart.data) return sendNotFound(response, "Cart");
     return sendSuccess(response, cart, "Cart retrieved");
   } catch (error) {
     return sendBadRequest(response, (error as Error).message);

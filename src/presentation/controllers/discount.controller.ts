@@ -14,7 +14,6 @@ export const calculateDiscountByCartId = async (
     const result = await discountService.calculateDiscountByCartId(
       request.body,
     );
-    console.log({ result });
 
     return sendSuccess(response, result, "Discount calculated");
   } catch (error) {

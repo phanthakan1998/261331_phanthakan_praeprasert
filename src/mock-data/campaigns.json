@@ -66,7 +66,7 @@
         "type": "SPECIAL_CAMPAIGNS",
         "category": "SEASONAL",
         "everyAmount": 300,
-        "discountYAmount": 40,
+        "discountAmount": 40,
         "description": "Get 40 THB off for every 300 THB spent"
       },
       "every500get100": {
