@@ -11,6 +11,7 @@ import {
   errorHandler,
   notFoundHandler,
 } from "./presentation/middleware/error.middleware";
+import loggerService from "./services/logger.service";
 
 const app = express();
 app.use(limiter);
@@ -31,6 +32,8 @@ app.use(cartRoutes);
 app.use(notFoundHandler);
 app.use(errorHandler);
 
-app.listen(PORT);
+app.listen(PORT, () => {
+  loggerService.info(`Application is running on port ${PORT}.`);
+});
 
 export default app;

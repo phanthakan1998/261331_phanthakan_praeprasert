@@ -3,24 +3,26 @@ import discountService from "../../services/discount.service";
 import {
   sendSuccess,
   sendBadRequest,
-  sendNotFound,
 } from "../../infrastructure/common/utils/response.util";
+import loggerService from "../../services/logger.service";
 
 export const calculateDiscountByCartId = async (
   request: Request,
   response: Response,
 ) => {
   try {
+    loggerService.start(request);
     const result = await discountService.calculateDiscountByCartId(
       request.body,
     );
-
+    loggerService.end(request);
     return sendSuccess(response, result, "Discount calculated");
-  } catch (error) {
-    if ((error as Error).message.includes("not found")) {
-      return sendNotFound(response, "Cart");
-    }
-    return sendBadRequest(response, (error as Error).message);
+  } catch (error: unknown) {
+    const message =
+      error instanceof Error ? error.message : "Unknown error occurred";
+
+    loggerService.error(message);
+    return sendBadRequest(response, message);
   }
 };
 

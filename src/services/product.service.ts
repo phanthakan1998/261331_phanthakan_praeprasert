@@ -2,12 +2,15 @@ import { Product } from "../domain/entities/product";
 import { HTTP_RESPONSE_CODE } from "../infrastructure/common/enums/response.enum";
 import { ResponseCommonType } from "../infrastructure/common/types/response-common.type";
 import { MockProductRepository } from "../infrastructure/repositories/product.repository";
+import loggerService from "./logger.service";
 
 const productRepository = new MockProductRepository();
 
 export const getAllProducts = async (): Promise<
   ResponseCommonType<Product[] | Error>
 > => {
+  loggerService.info("getAllProducts");
+
   try {
     const result = await productRepository.getAllProducts();
     return {

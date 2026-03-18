@@ -5,6 +5,7 @@ import {
 } from "../infrastructure/common/types/cart.type";
 import { ResponseCommonType } from "../infrastructure/common/types/response-common.type";
 import { MockCartRepository } from "../infrastructure/repositories/cart.repository";
+import loggerService from "./logger.service";
 
 const cartRepository = new MockCartRepository();
 
@@ -12,6 +13,8 @@ export const getCartById = async (
   id: string,
 ): Promise<ResponseCommonType<Cart | null>> => {
   try {
+    loggerService.info("GetCart");
+    loggerService.debug("GetCart for cartId", id);
     const cart = await cartRepository.findById(id);
     if (!cart) {
       return {
@@ -34,6 +37,8 @@ export const getCartById = async (
 export const createCart = async (
   request: CreateCartRequest,
 ): Promise<ResponseCommonType<Cart | Error>> => {
+  loggerService.info("CreateCart");
+  loggerService.debug("CreateCart", { request });
   try {
     const cart = await cartRepository.create(request);
     return {
@@ -49,6 +54,7 @@ export const createCart = async (
 };
 
 export const getAllCarts = async (): Promise<ResponseCommonType<Cart[]>> => {
+  loggerService.info("GetAllCart");
   try {
     const carts = await cartRepository.getAllCarts();
     return {

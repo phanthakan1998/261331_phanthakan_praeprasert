@@ -12,6 +12,7 @@ import {
 } from "../infrastructure/common/types/discount.type";
 import { ResponseCommonType } from "../infrastructure/common/types/response-common.type";
 import cartService from "./cart.service";
+import loggerService from "./logger.service";
 
 const POINTS_TO_THB = 1;
 const MAX_POINTS_CAP = 0.2;
@@ -36,6 +37,7 @@ const getCategoryTotal = (items: CartItem[], category: string): number => {
 
 const groupCampaigns = (campaigns: Campaign[]): Record<string, Campaign> => {
   const campaignList: Record<string, Campaign> = {};
+  loggerService.info("GroupCampaigns");
 
   for (const campaign of campaigns) {
     if (campaignList[campaign.category]) {
@@ -44,6 +46,7 @@ const groupCampaigns = (campaigns: Campaign[]): Record<string, Campaign> => {
     campaignList[campaign.category] = campaign;
   }
 
+  loggerService.debug("Grouped campaigns by category", { campaignList });
   return campaignList;
 };
 
@@ -113,6 +116,7 @@ const calculate = (
     CampaignCategory.SEASONAL,
   ];
 
+  loggerService.info("Apply coupon");
   for (const category of order) {
     const campaign = grouped[category];
     if (!campaign) continue;
@@ -143,19 +147,25 @@ const calculate = (
 };
 
 export const calculateDiscountByCartId = async (
-  req: DiscountCalculationByCartIdRequest,
+  request: DiscountCalculationByCartIdRequest,
 ): Promise<ResponseCommonType<DiscountCalculationResult | null>> => {
-  const cart = await cartService.getCartById(req.cartId);
+  loggerService.info("calculateDiscountByCartId");
+  loggerService.debug("calculateDiscountByCartId for cartId", request.cartId);
+  loggerService.debug(
+    "calculateDiscountByCartId with campaigns",
+    request.campaigns,
+  );
+  const cart = await cartService.getCartById(request.cartId);
 
   if (!cart || !cart.data) {
-    throw new Error(`Cart not found: ${req.cartId}`);
+    throw new Error(`Cart not found: ${request.cartId}`);
   }
 
   if (!cart.data.items || cart.data.items.length === 0) {
     return { status: HTTP_RESPONSE_CODE.OK, data: null };
   }
 
-  const result = calculate(cart.data.items, req.campaigns);
+  const result = calculate(cart.data.items, request.campaigns);
 
   return { status: HTTP_RESPONSE_CODE.OK, data: result };
 };
