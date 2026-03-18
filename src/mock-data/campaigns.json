@@ -1,0 +1,81 @@
+{
+  "campaigns": {
+    "coupon": {
+      "fixedAmount50": {
+        "type": "FIXED_AMOUNT",
+        "category": "COUPON",
+        "amount": 50,
+        "description": "Fixed 50 THB off"
+      },
+      "fixedAmount100": {
+        "type": "FIXED_AMOUNT",
+        "category": "COUPON",
+        "amount": 100,
+        "description": "Fixed 100 THB off"
+      },
+      "percentage10": {
+        "type": "PERCENTAGE",
+        "category": "COUPON",
+        "percentage": 10,
+        "description": "10% off entire cart"
+      },
+      "percentage15": {
+        "type": "PERCENTAGE",
+        "category": "COUPON",
+        "percentage": 15,
+        "description": "15% off entire cart"
+      }
+    },
+    "onTop": {
+      "clothingDiscount15": {
+        "type": "PERCENTAGE_BY_CATEGORY",
+        "category": "ON_TOP",
+        "itemCategory": "Clothing",
+        "percentage": 15,
+        "description": "15% off on Clothing items"
+      },
+      "accessoriesDiscount10": {
+        "type": "PERCENTAGE_BY_CATEGORY",
+        "category": "ON_TOP",
+        "itemCategory": "Accessories",
+        "percentage": 10,
+        "description": "10% off on Accessories items"
+      },
+      "electronicsDiscount20": {
+        "type": "PERCENTAGE_BY_CATEGORY",
+        "category": "ON_TOP",
+        "itemCategory": "Electronics",
+        "percentage": 20,
+        "description": "20% off on Electronics items"
+      },
+      "points68": {
+        "type": "DISCOUNT_BY_POINTS",
+        "category": "ON_TOP",
+        "points": 68,
+        "description": "Use 68 points (68 THB, max 20% of total)"
+      },
+      "points200": {
+        "type": "DISCOUNT_BY_POINTS",
+        "category": "ON_TOP",
+        "points": 200,
+        "description": "Use 200 points (200 THB, max 20% of total)"
+      }
+    },
+    "seasonal": {
+      "every300get40": {
+        "type": "SPECIAL_CAMPAIGNS",
+        "category": "SEASONAL",
+        "everyAmount": 300,
+        "discountYAmount": 40,
+        "description": "Get 40 THB off for every 300 THB spent"
+      },
+      "every500get100": {
+        "type": "SPECIAL_CAMPAIGNS",
+        "category": "SEASONAL",
+        "everyAmount": 500,
+        "discountAmount": 100,
+        "description": "Get 100 THB off for every 500 THB spent"
+      }
+    }
+  }
+}

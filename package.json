@@ -3,24 +3,32 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
+    "build": "tsc",
+    "start": "node dist/app.ts"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/phanthakan1998/playtorium-assignment.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/phanthakan1998/playtorium-assignment/issues"
-  },
-  "homepage": "https://github.com/phanthakan1998/playtorium-assignment#readme",
-  "description": "",
   "dependencies": {
-    "express": "^5.2.1"
+    "@prisma/adapter-pg": "^7.5.0",
+    "@prisma/client": "^7.5.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "dotenv-expand": "^12.0.3",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.3.1",
+    "joi": "^18.0.2",
+    "pg": "^8.20.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.14"
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.5.0",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.8",
+    "nodemon": "^3.1.14",
+    "prisma": "^7.5.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.9.3"
   }
 }

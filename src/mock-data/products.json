@@ -1,0 +1,64 @@
+{
+  "products": [
+    {
+      "id": "prod-001",
+      "name": "T-Shirt",
+      "category": "Clothing",
+      "price": 350
+    },
+    {
+      "id": "prod-002",
+      "name": "Hat",
+      "category": "Accessories",
+      "price": 250
+    },
+    {
+      "id": "prod-003",
+      "name": "Hoodie",
+      "category": "Clothing",
+      "price": 700
+    },
+    {
+      "id": "prod-004",
+      "name": "Watch",
+      "category": "Accessories",
+      "price": 850
+    },
+    {
+      "id": "prod-005",
+      "name": "Bag",
+      "category": "Accessories",
+      "price": 640
+    },
+    {
+      "id": "prod-006",
+      "name": "Belt",
+      "category": "Accessories",
+      "price": 230
+    },
+    {
+      "id": "prod-007",
+      "name": "Laptop",
+      "category": "Electronics",
+      "price": 25000
+    },
+    {
+      "id": "prod-008",
+      "name": "Headphones",
+      "category": "Electronics",
+      "price": 2500
+    },
+    {
+      "id": "prod-009",
+      "name": "Sneakers",
+      "category": "Clothing",
+      "price": 1800
+    },
+    {
+      "id": "prod-010",
+      "name": "Sunglasses",
+      "category": "Accessories",
+      "price": 450
+    }
+  ]
+}

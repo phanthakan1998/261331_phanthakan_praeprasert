@@ -1,0 +1,97 @@
+{
+  "carts": [
+    {
+      "id": "cart-001",
+      "userId": "user-001",
+      "description": "Basic cart (T-Shirt + Hat) - Total: 600 THB",
+      "items": [
+        {
+          "id": "item-001",
+          "productId": "prod-001",
+          "name": "T-Shirt",
+          "category": "Clothing",
+          "price": 350,
+          "quantity": 1
+        },
+        {
+          "id": "item-002",
+          "productId": "prod-002",
+          "name": "Hat",
+          "category": "Accessories",
+          "price": 250,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "cart-002",
+      "userId": "user-002",
+      "description": "Mixed category cart - Total: 2,540 THB (Clothing: 1,050 THB, Accessories: 1,490 THB)",
+      "items": [
+        {
+          "id": "item-003",
+          "productId": "prod-001",
+          "name": "T-Shirt",
+          "category": "Clothing",
+          "price": 350,
+          "quantity": 1
+        },
+        {
+          "id": "item-004",
+          "productId": "prod-003",
+          "name": "Hoodie",
+          "category": "Clothing",
+          "price": 700,
+          "quantity": 1
+        },
+        {
+          "id": "item-005",
+          "productId": "prod-004",
+          "name": "Watch",
+          "category": "Accessories",
+          "price": 850,
+          "quantity": 1
+        },
+        {
+          "id": "item-006",
+          "productId": "prod-005",
+          "name": "Bag",
+          "category": "Accessories",
+          "price": 640,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "cart-003",
+      "userId": "user-003",
+      "description": "Three item cart - Total: 830 THB",
+      "items": [
+        {
+          "id": "item-007",
+          "productId": "prod-001",
+          "name": "T-Shirt",
+          "category": "Clothing",
+          "price": 350,
+          "quantity": 1
+        },
+        {
+          "id": "item-008",
+          "productId": "prod-002",
+          "name": "Hat",
+          "category": "Accessories",
+          "price": 250,
+          "quantity": 1
+        },
+        {
+          "id": "item-009",
+          "productId": "prod-006",
+          "name": "Belt",
+          "category": "Accessories",
+          "price": 230,
+          "quantity": 1
+        }
+      ]
+    }
+  ]
+}
